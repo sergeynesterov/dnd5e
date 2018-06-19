@@ -15,7 +15,7 @@ before_script:
   - cd ./wiki
 
 before_deploy:
-  - git config --local user.name "Sergey Nesterov"
+  - git config --local user.name "sergeynesterov"
   - git config --local user.email "menestrel.me@gmail.com"
   - git describe --tags --contains || git tag "latest"
 
