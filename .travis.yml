@@ -2,14 +2,45 @@ language: java
 
 dist: trusty
 sudo: false
-  
+
 cache:
   directories:
     - "$HOME/.m2"
-   
+
 jdk:
   - oraclejdk8
   - openjdk8
 
 before_script:
   - cd ./wiki
+
+before_deploy:
+  - git config --local user.name "Sergey Nesterov"
+  - git config --local user.email "menestrel.me@gmail.com"
+  - git describe --tags --contains || git tag "latest"
+
+jobs:
+  include:
+    - stage: GitHub Release
+      deploy:
+        provider: releases
+        api_key:
+          secure: YOUR_API_KEY_ENCRYPTED
+        file_glob: true
+        file: ./**/*.war
+        skip_cleanup: true
+        on:
+          tags: true
+          branch: master
+    - stage: GitHub Release
+      deploy:
+        provider: releases
+        api_key:
+          secure: YOUR_API_KEY_ENCRYPTED
+        file_glob: true
+        file: ./**/*.war
+        overwrite: true
+        skip_cleanup: true
+        on:
+          tags: false
+          branch: master
