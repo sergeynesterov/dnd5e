@@ -17,7 +17,7 @@ before_script:
 before_deploy:
   - git config --local user.name "Sergey Nesterov"
   - git config --local user.email "menestrel.me@gmail.com"
-  - git describe --tags --contains || git tag "latest"
+  - git describe --tags --contains || git tag "latest" --force
 
 jobs:
   include:
