@@ -22,10 +22,11 @@ before_deploy:
 jobs:
   include:
     - stage: GitHub Release
+      script: mvn package -DskipTests
       deploy:
         provider: releases
         api_key:
-          secure: YOUR_API_KEY_ENCRYPTED
+          secure: ArnKYfbuzge63nUG2B2Avx77gfrDe8aD0URWJ+46vR8+ovwQtewtjdb1+Fik8HDTBv62k/2lXHOu6Knw9mKUcHDYvZIo8wsEu1NT74txzXVEyWw2/hH0LSC7asy8d0/2NYGLj2V2V85x5MsgJX7+zVOsS/V7oFyk/TM80Udbrw26VrJ9g/CfNRPsg7+1cGN6i8zKcoEeSxnO9HS0JNs52ZgpVAIJOfUm37Z6r2DBibYXmf3tdjdhu83kmL5GKf/ohFsc3vd7/eiT9vfA8XF19zGD290Zjr6Tq7jPg9haLE0fYmfzPK272qeXk2d5a6v8ltRNFqAdBomH1ShFCu45ZWjCucngRv1CDc/HKnYSr1NsLvyGs5i2Ok9bgJAyE74scoRQQn9NtJ4eDOLOEpZ8/TbUIVUpe7fDAilNxE0XdC6ONYzBWMqpj4iBFlrjrF63TdrgDr6dRkHBKcz4hTed57p5HPxAn82Si2sp2Ay2zm9GEX+UVaUNSiFdwmQ+SWKIo9s3Z34Qn5MsmWaPNZCDbUZToFihp+uahec0bEjCHPUK+c2VPQQeWA7ttZn0JCyXidI/b+zhigbktroYROwb6lNy/B6PfcOr56ZcFSPV5UfFK/gOyXJEC1CdQnf+lFluXnmzrWpwdNEMuB/kUsdP9SKa4zn3wPmiCa6laHon4hQ=
         file_glob: true
         file: ./**/*.war
         skip_cleanup: true
@@ -33,10 +34,11 @@ jobs:
           tags: true
           branch: master
     - stage: GitHub Release
+      script: mvn package -DskipTests
       deploy:
         provider: releases
         api_key:
-          secure: YOUR_API_KEY_ENCRYPTED
+          secure: ArnKYfbuzge63nUG2B2Avx77gfrDe8aD0URWJ+46vR8+ovwQtewtjdb1+Fik8HDTBv62k/2lXHOu6Knw9mKUcHDYvZIo8wsEu1NT74txzXVEyWw2/hH0LSC7asy8d0/2NYGLj2V2V85x5MsgJX7+zVOsS/V7oFyk/TM80Udbrw26VrJ9g/CfNRPsg7+1cGN6i8zKcoEeSxnO9HS0JNs52ZgpVAIJOfUm37Z6r2DBibYXmf3tdjdhu83kmL5GKf/ohFsc3vd7/eiT9vfA8XF19zGD290Zjr6Tq7jPg9haLE0fYmfzPK272qeXk2d5a6v8ltRNFqAdBomH1ShFCu45ZWjCucngRv1CDc/HKnYSr1NsLvyGs5i2Ok9bgJAyE74scoRQQn9NtJ4eDOLOEpZ8/TbUIVUpe7fDAilNxE0XdC6ONYzBWMqpj4iBFlrjrF63TdrgDr6dRkHBKcz4hTed57p5HPxAn82Si2sp2Ay2zm9GEX+UVaUNSiFdwmQ+SWKIo9s3Z34Qn5MsmWaPNZCDbUZToFihp+uahec0bEjCHPUK+c2VPQQeWA7ttZn0JCyXidI/b+zhigbktroYROwb6lNy/B6PfcOr56ZcFSPV5UfFK/gOyXJEC1CdQnf+lFluXnmzrWpwdNEMuB/kUsdP9SKa4zn3wPmiCa6laHon4hQ=
         file_glob: true
         file: ./**/*.war
         overwrite: true
